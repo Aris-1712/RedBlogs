@@ -1,7 +1,7 @@
 import React from 'react'
 import './Nav.css'
 import Logo from '../../Assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 const Nav=(props)=>{
 
     return(
@@ -9,13 +9,23 @@ const Nav=(props)=>{
             <div style={{margin:"0 100px",height:"100%",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
                 <Link to="/"><img style={{width:60,height:60}} src={Logo}></img></Link>
                 <div>
-                    <Link style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="">Sign Up</Link>
-                    <Link style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="">Log In</Link>
-                    <Link style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="/new">New Blog</Link>
+                    <Link style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="/signup">Sign Up</Link>
+                    {localStorage.getItem("token")!==undefined && localStorage.getItem("token")!=="" && localStorage.getItem("token")?<Link onClick={()=>{localStorage.clear()
+                    window.location.reload()    
+                }} style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="">Sign Out</Link>:
+                <Link  style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20}} to="/signin">Sign In</Link>}
+                    <span onClick={()=>{
+                        if(localStorage.getItem("token")!==undefined && localStorage.getItem("token")!=="" && localStorage.getItem("token")){
+                            console.log(props)
+                            props.history.push('/new')
+                        }else{
+                            alert("Please Login")
+                        }
+                    }} style={{color:"#30475e",textDecoration:"none",fontSize:20,fontWeight:700,marginLeft:20,cursor:"pointer"}} >New Blog</span>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Nav
+export default withRouter(Nav)

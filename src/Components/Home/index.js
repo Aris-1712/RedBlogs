@@ -13,6 +13,7 @@ const Home = (props) => {
     useEffect(() => {
         setBlogs([...props.blogs])
     }, [props.blogs])
+    console.log(localStorage.getItem("token"),localStorage.getItem("uid"),localStorage.getItem("uemail"))
     return (
         <div>
             <Nav></Nav>

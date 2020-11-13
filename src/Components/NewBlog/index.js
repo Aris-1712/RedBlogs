@@ -18,7 +18,8 @@ const NewBlog=(props)=>{
         let data={
             name:title,
             desc:mark,
-            img:image
+            img:image,
+            userid:localStorage.getItem("uid")
         }
         let res=await Axios.post("http://localhost:3001/new",data)
         if(res.status===200){
