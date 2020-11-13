@@ -12,7 +12,7 @@ const Signin=(props)=>{
                 email:email,
                 password:pass
             }
-            let res=await Axios.post("http://localhost:3001/signin",data)
+            let res=await Axios.post("https://nameless-dusk-13618.herokuapp.com/signin",data)
             if(res.status===200){
                 localStorage.setItem("uemail",res.data.email)
                 localStorage.setItem("uid",res.data._id)

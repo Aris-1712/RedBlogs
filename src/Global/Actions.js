@@ -3,7 +3,7 @@ export const BlogsGet=()=>{
    
     return(async(dispatch)=>{
         console.log("HERE") 
-        let res=await Axios.get("http://localhost:3001/all")
+        let res=await Axios.get("https://nameless-dusk-13618.herokuapp.com/all")
             if(res.status===200){
                 console.log(res.data)
                 return(dispatch(Blogs(res.data)))

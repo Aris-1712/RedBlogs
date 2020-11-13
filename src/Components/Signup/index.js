@@ -12,7 +12,7 @@ const Signup=(props)=>{
                 email:email,
                 password:pass
             }
-            let res=await Axios.post("http://localhost:3001/signup",data)
+            let res=await Axios.post("https://nameless-dusk-13618.herokuapp.com/signup",data)
             if(res.status===200){
                 alert("Sign up successfull.")
                 props.history.push("/")

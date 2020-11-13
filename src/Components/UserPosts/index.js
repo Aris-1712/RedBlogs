@@ -35,7 +35,7 @@ const UserPosts = (props) => {
                                     }} style={{ color: "green", fontSize: 20 ,cursor:"pointer"}} class="fa fa-pencil" aria-hidden="true"></i>
                                     <i onClick={async () => {
                                         try {
-                                            let res = await Axios.post("http://localhost:3001/delete", { _id: ele._id }, { headers: { "x-auth-token": localStorage.getItem("token") } })
+                                            let res = await Axios.post("https://nameless-dusk-13618.herokuapp.com/delete", { _id: ele._id }, { headers: { "x-auth-token": localStorage.getItem("token") } })
                                             if (res.status === 200) {
                                                 alert("Deleted")
                                                 props.getBlogs()

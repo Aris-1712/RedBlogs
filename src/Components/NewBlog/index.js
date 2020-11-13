@@ -24,7 +24,7 @@ const NewBlog=(props)=>{
             userid:localStorage.getItem("uid"),
             useremail:localStorage.getItem("uemail")
         }
-        let res=await Axios.post("http://localhost:3001/new",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
+        let res=await Axios.post("https://nameless-dusk-13618.herokuapp.com/new",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
         if(res.status===200){
             alert("saved")
             props.getBlogs()

@@ -31,7 +31,7 @@ const Edit=(props)=>{
             useremail:localStorage.getItem("uemail"),
             _id:_id
         }
-        let res=await Axios.post("http://localhost:3001/edit",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
+        let res=await Axios.post("https://nameless-dusk-13618.herokuapp.com/edit",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
         if(res.status===200){
             alert("updated")
             props.getBlogs()
