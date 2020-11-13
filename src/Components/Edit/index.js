@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
-import './NewBlog.css'
+import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import Nav from '../Nav'
 import { connect } from 'react-redux'
 import * as Actions from '../../Global/Actions'
 import { withRouter } from 'react-router'
-const NewBlog=(props)=>{
+const Edit=(props)=>{
     const [title,setTitle]=useState("")
     const [image,setImage]=useState("")
     const [mark,setMark]=useState("")
+    const [_id,setId]=useState("")
     const clear=()=>{
         setTitle("")
             setImage("")
             setMark("")
     }
+    useEffect(()=>{
+        setTitle(props.location.state.data.name)
+        setImage(props.location.state.data.img)
+        setMark(props.location.state.data.desc)
+        setId(props.location.state.data._id)
+    },[])
     const save=async()=>{
         try{
         if(title!=="" && image !== "" && mark !== ""){ 
@@ -22,11 +28,12 @@ const NewBlog=(props)=>{
             desc:mark,
             img:image,
             userid:localStorage.getItem("uid"),
-            useremail:localStorage.getItem("uemail")
+            useremail:localStorage.getItem("uemail"),
+            _id:_id
         }
-        let res=await Axios.post("http://localhost:3001/new",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
+        let res=await Axios.post("http://localhost:3001/edit",data,{headers:{"x-auth-token":localStorage.getItem("token")}})
         if(res.status===200){
-            alert("saved")
+            alert("updated")
             props.getBlogs()
             props.history.push('/')
             setTitle("")
@@ -47,7 +54,7 @@ const NewBlog=(props)=>{
         <Nav></Nav>
         <div style={{margin:"80px 100px"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-                <h1>New Blog</h1>
+                <h1>Edit Blog</h1>
                 <div style={{width:250,display:"flex",justifyContent:"space-between"}}>
                     <button onClick={save} className="buttonSave">SAVE</button>
                     <button onClick={clear} className="buttonClear">CLEAR</button>
@@ -78,4 +85,4 @@ const mapActionsToProps = (dispatch) => {
         getBlogs: () => { dispatch(Actions.BlogsGet()) }
     })
 }
-export default connect(mapStateToProps, mapActionsToProps)(withRouter(NewBlog))
+export default connect(mapStateToProps, mapActionsToProps)(withRouter(Edit))

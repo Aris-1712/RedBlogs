@@ -11,9 +11,10 @@ const Home = (props) => {
         props.getBlogs()
     }, [])
     useEffect(() => {
-        setBlogs([...props.blogs])
+        // props.blogs.sort(function(a, b){return a.date - b.date});
+        setBlogs([...props.blogs.sort(function(a, b){return new Date(b.date)-new Date(a.date)})])
     }, [props.blogs])
-    console.log(localStorage.getItem("token"),localStorage.getItem("uid"),localStorage.getItem("uemail"))
+
     return (
         <div>
             <Nav></Nav>
