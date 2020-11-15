@@ -1,0 +1,12 @@
+.signinBG{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (max-width: 600px) {
+    .signinBG{
+        background-color: orange;
+    }
+  }

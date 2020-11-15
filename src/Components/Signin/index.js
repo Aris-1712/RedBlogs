@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Logo from '../../Assets/logo.png'
 import {validate} from 'email-validator'
 import Axios from 'axios'
+import './Signin.css'
 const Signin=(props)=>{
     const [email,setEmail]=useState("")
     const [pass,setPass]=useState("")
@@ -27,7 +28,7 @@ const Signin=(props)=>{
         }
     }
     return(
-        <div style={{width:"100%",height:window.innerHeight,display:"flex",justifyContent:"center",alignItems:"center"}}>
+        <div className="signinBG" style={{height:window.innerHeight}}>
             <div style={{width:500,height:550,background:"orange",display:"flex",flexDirection:"column",alignItems:"center "}}>
             <img src={Logo}></img>
             <h1 style={{color:"#222831"}}>Signin</h1>

@@ -6,3 +6,27 @@
     position: fixed;
     
 }
+
+.navHolder{
+margin:0 100px;
+height:100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.navLink{
+color:#30475e ;
+text-decoration: none;
+font-size: 20px;
+font-weight: 700;
+margin-left: 20px;
+}
+@media only screen and (max-width: 600px) {
+    .navHolder {
+        margin:0 10px;
+    }
+    .navLink{
+        font-size: 15px;
+    }
+  }

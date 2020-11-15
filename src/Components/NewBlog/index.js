@@ -45,10 +45,10 @@ const NewBlog=(props)=>{
     }
     return(<div>
         <Nav></Nav>
-        <div style={{margin:"80px 100px"}}>
+        <div className="newBlogHolder">
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                 <h1>New Blog</h1>
-                <div style={{width:250,display:"flex",justifyContent:"space-between"}}>
+                <div className="buttonHolder">
                     <button onClick={save} className="buttonSave">SAVE</button>
                     <button onClick={clear} className="buttonClear">CLEAR</button>
                     </div>
@@ -62,7 +62,7 @@ const NewBlog=(props)=>{
             <br></br>
             <br></br>
             <label className="labelWidth">Content(Markdown)</label>
-            <textarea value={mark} onChange={(eve)=>{setMark(eve.target.value)}} style={{width:"100%",height:500}}></textarea>
+            <textarea value={mark} onChange={(eve)=>{setMark(eve.target.value)}} style={{width:"100%",height:500,boxSizing:"border-box"}}></textarea>
         </div>
         </div>
     )
