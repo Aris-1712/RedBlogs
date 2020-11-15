@@ -24,7 +24,7 @@ const ViewBlog = (props) => {
     return (
         <div>
             <Nav></Nav>
-            <div style={{ margin: "80px 100px 0px" }}>
+            <div className="Viewholder">
                 <h2>{blog.name}</h2>
                 <div style={{ width: "100%", marginBottom: 20 }}>
                     <img src={blog.img} style={{ width: "100%" }}></img>
